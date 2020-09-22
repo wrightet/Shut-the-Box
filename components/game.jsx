@@ -38,6 +38,8 @@ class Game extends React.Component{
     render(){
         let dice1 = Math.floor(Math.random() * (7 - 1) + 1);
         let dice2 = Math.floor(Math.random() * (7 - 1) + 1);
+        let num1 = 0;
+        let num2 = 0;
         let roll_total = dice1 + dice2;
         console.log(this.state.tiles[8])
         return(
@@ -46,8 +48,10 @@ class Game extends React.Component{
                 <div>Dice Roll:{dice1}, {dice2}</div>
                 {this.state.gameOver === false ? 
                 <div>
-                    <form>
-
+                    <form onSubmit={this.chooseTiles((roll_total, num1, num2))}>
+                        <input type="integer" value={num1}/>
+                        <input type="integer" value={num2}/>
+                        <input type="submit"/>
                     </form>
                 </div>
                 :
