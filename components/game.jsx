@@ -4,7 +4,8 @@ class Game extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            gameOver: false
         }
         // this.tiles = [1,2,3,4,5,6,7,8,9];
         // this.dice1 = [1,2,3,4,5,6];
@@ -15,6 +16,7 @@ class Game extends React.Component{
 
     restartGame(){
         this.setState({tiles:[1,2,3,4,5,6,7,8,9]})
+        this.setState({ gameOver: false})
     }
 
     chooseTiles(roll_val, num1, num2=0){
@@ -42,11 +44,14 @@ class Game extends React.Component{
             <div>
                 <div>{this.state.tiles}</div>
                 <div>Dice Roll:{dice1}, {dice2}</div>
+                {this.state.gameOver === false ? 
                 <div>
                     <form>
 
                     </form>
                 </div>
+                :
+                <h1>GAME OVER</h1>}
                 {/* <button onClick={() => this.chooseTiles(5, 2, 3)}>choose</button> */}
                 <button onClick={() => this.restartGame()}>restart game</button>
             </div>

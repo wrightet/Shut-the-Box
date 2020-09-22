@@ -157,7 +157,8 @@ var Game = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      gameOver: false
     }; // this.tiles = [1,2,3,4,5,6,7,8,9];
     // this.dice1 = [1,2,3,4,5,6];
     // this.dice2 = [1,2,3,4,5,6];
@@ -172,6 +173,9 @@ var Game = /*#__PURE__*/function (_React$Component) {
     value: function restartGame() {
       this.setState({
         tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      });
+      this.setState({
+        gameOver: false
       });
     }
   }, {
@@ -204,7 +208,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
       var dice2 = Math.floor(Math.random() * (7 - 1) + 1);
       var roll_total = dice1 + dice2;
       console.log(this.state.tiles[8]);
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.tiles), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", dice1, ", ", dice2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.tiles), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", dice1, ", ", dice2), this.state.gameOver === false ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this2.restartGame();
         }
