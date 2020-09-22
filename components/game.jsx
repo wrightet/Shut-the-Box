@@ -5,11 +5,15 @@ class Game extends React.Component{
         super(props);
         this.state = {
             tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-            gameOver: false
+            gameOver: false,
+            num1: 0,
+            num2:0
         }
         // this.tiles = [1,2,3,4,5,6,7,8,9];
         // this.dice1 = [1,2,3,4,5,6];
         // this.dice2 = [1,2,3,4,5,6];
+        this.num1 = 0;
+        this.num2 = 0;
         this.restartGame = this.restartGame.bind(this);
         this.chooseTiles = this.chooseTiles.bind(this);
     }
@@ -34,6 +38,9 @@ class Game extends React.Component{
        }
 
     }
+    update(field){
+       return e => this.setState({[field]: e.target.value})
+    }
 
     render(){
         let dice1 = Math.floor(Math.random() * (7 - 1) + 1);
@@ -41,16 +48,18 @@ class Game extends React.Component{
         let num1 = 0;
         let num2 = 0;
         let roll_total = dice1 + dice2;
-        console.log(this.state.tiles[8])
+        console.log(this.state.tiles)
+        console.log(this.state.num1)
+        console.log(this.state.num2)
         return(
             <div>
                 <div>{this.state.tiles}</div>
                 <div>Dice Roll:{dice1}, {dice2}</div>
                 {this.state.gameOver === false ? 
                 <div>
-                    <form onSubmit={this.chooseTiles((roll_total, num1, num2))}>
-                        <input type="integer" value={num1}/>
-                        <input type="integer" value={num2}/>
+                    <form onSubmit={this.chooseTiles((roll_total,this.state.num1, this.state.num2))}>
+                        <input type="integer"  onChange={() => this.update('num1')}/>
+                        <input type="integer"  onChange={() => this.update('num2')}/>
                         <input type="submit"/>
                     </form>
                 </div>

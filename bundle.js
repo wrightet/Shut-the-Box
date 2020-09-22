@@ -123,6 +123,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -158,11 +160,15 @@ var Game = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-      gameOver: false
+      gameOver: false,
+      num1: 0,
+      num2: 0
     }; // this.tiles = [1,2,3,4,5,6,7,8,9];
     // this.dice1 = [1,2,3,4,5,6];
     // this.dice2 = [1,2,3,4,5,6];
 
+    _this.num1 = 0;
+    _this.num2 = 0;
     _this.restartGame = _this.restartGame.bind(_assertThisInitialized(_this));
     _this.chooseTiles = _this.chooseTiles.bind(_assertThisInitialized(_this));
     return _this;
@@ -200,29 +206,44 @@ var Game = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, field, e.target.value));
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var dice1 = Math.floor(Math.random() * (7 - 1) + 1);
       var dice2 = Math.floor(Math.random() * (7 - 1) + 1);
       var num1 = 0;
       var num2 = 0;
       var roll_total = dice1 + dice2;
-      console.log(this.state.tiles[8]);
+      console.log(this.state.tiles);
+      console.log(this.state.num1);
+      console.log(this.state.num2);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.tiles), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", dice1, ", ", dice2), this.state.gameOver === false ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.chooseTiles((roll_total, num1, num2))
+        onSubmit: this.chooseTiles((roll_total, this.state.num1, this.state.num2))
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "integer",
-        value: num1
+        onChange: function onChange() {
+          return _this3.update('num1');
+        }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "integer",
-        value: num2
+        onChange: function onChange() {
+          return _this3.update('num2');
+        }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit"
       }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this2.restartGame();
+          return _this3.restartGame();
         }
       }, "restart game"));
     }
