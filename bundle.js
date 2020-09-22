@@ -162,16 +162,32 @@ var Game = /*#__PURE__*/function (_React$Component) {
     // this.dice1 = [1,2,3,4,5,6];
     // this.dice2 = [1,2,3,4,5,6];
 
+    _this.restartGame = _this.restartGame.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Game, [{
+    key: "restartGame",
+    value: function restartGame() {
+      this.setState({
+        tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var dice1 = Math.floor(Math.random() * (7 - 1) + 1);
       var dice2 = Math.floor(Math.random() * (7 - 1) + 1);
       var roll_total = dice1 + dice2;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", dice1, ", ", dice2);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", dice1, ", ", dice2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        action: ""
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this2.restartGame();
+        }
+      }, "restart game"));
     }
   }]);
 
@@ -198,13 +214,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Main = function Main() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_game_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "footer-div"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://www.linkedin.com/in/ethan-wright-91a75270/"
-  }, "LinkedIn"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://github.com/wrightet"
-  }, "GitHub")));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_game_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Main);
