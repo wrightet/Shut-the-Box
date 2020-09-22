@@ -156,16 +156,22 @@ var Game = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, Game);
 
     _this = _super.call(this, props);
-    _this.tiles = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    _this.dice1 = [1, 2, 3, 4, 5, 6];
-    _this.dice2 = [1, 2, 3, 4, 5, 6];
+    _this.state = {
+      tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    }; // this.tiles = [1,2,3,4,5,6,7,8,9];
+    // this.dice1 = [1,2,3,4,5,6];
+    // this.dice2 = [1,2,3,4,5,6];
+
     return _this;
   }
 
   _createClass(Game, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " test");
+      var dice1 = Math.floor(Math.random() * (7 - 1) + 1);
+      var dice2 = Math.floor(Math.random() * (7 - 1) + 1);
+      var roll_total = dice1 + dice2;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", dice1, ", ", dice2);
     }
   }]);
 
