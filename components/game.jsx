@@ -10,24 +10,44 @@ class Game extends React.Component{
         // this.dice1 = [1,2,3,4,5,6];
         // this.dice2 = [1,2,3,4,5,6];
         this.restartGame = this.restartGame.bind(this);
+        this.chooseTiles = this.chooseTiles.bind(this);
     }
 
     restartGame(){
         this.setState({tiles:[1,2,3,4,5,6,7,8,9]})
     }
 
+    chooseTiles(roll_val, num1, num2=0){
+       console.log(num1,num2)
+       let idx1 = this.state.tiles.indexOf(num1);
+       let idx2 = null
+       let new_arr = this.state.tiles
+       if (num2 !== 0){
+           idx2 = this.state.tiles.indexOf(num2);
+       }
+       if (num1 + num2 === roll_val){
+           new_arr[idx1] = 0
+           if (num2) new_arr[idx2] = 0
+           this.setState({tiles: new_arr})
+       }
+
+    }
+
     render(){
         let dice1 = Math.floor(Math.random() * (7 - 1) + 1);
         let dice2 = Math.floor(Math.random() * (7 - 1) + 1);
         let roll_total = dice1 + dice2;
+        console.log(this.state.tiles[8])
         return(
             <div>
+                <div>{this.state.tiles}</div>
                 <div>Dice Roll:{dice1}, {dice2}</div>
                 <div>
-                    <form action="">
+                    <form>
 
                     </form>
                 </div>
+                {/* <button onClick={() => this.chooseTiles(5, 2, 3)}>choose</button> */}
                 <button onClick={() => this.restartGame()}>restart game</button>
             </div>
        

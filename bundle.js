@@ -163,6 +163,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
     // this.dice2 = [1,2,3,4,5,6];
 
     _this.restartGame = _this.restartGame.bind(_assertThisInitialized(_this));
+    _this.chooseTiles = _this.chooseTiles.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -174,6 +175,27 @@ var Game = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "chooseTiles",
+    value: function chooseTiles(roll_val, num1) {
+      var num2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+      console.log(num1, num2);
+      var idx1 = this.state.tiles.indexOf(num1);
+      var idx2 = null;
+      var new_arr = this.state.tiles;
+
+      if (num2 !== 0) {
+        idx2 = this.state.tiles.indexOf(num2);
+      }
+
+      if (num1 + num2 === roll_val) {
+        new_arr[idx1] = 0;
+        if (num2) new_arr[idx2] = 0;
+        this.setState({
+          tiles: new_arr
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -181,9 +203,8 @@ var Game = /*#__PURE__*/function (_React$Component) {
       var dice1 = Math.floor(Math.random() * (7 - 1) + 1);
       var dice2 = Math.floor(Math.random() * (7 - 1) + 1);
       var roll_total = dice1 + dice2;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", dice1, ", ", dice2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        action: ""
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      console.log(this.state.tiles[8]);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.tiles), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", dice1, ", ", dice2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this2.restartGame();
         }
