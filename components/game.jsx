@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Tiles from './tiles';
 class Game extends React.Component{
     constructor(props) {
         super(props);
@@ -48,11 +48,10 @@ class Game extends React.Component{
         let num1 = 0;
         let num2 = 0;
         let roll_total = dice1 + dice2;
-        console.log(this.state.tiles)
-        console.log(this.state.num1)
-        console.log(this.state.num2)
+
         return(
             <div>
+                <Tiles tiles={this.state.tiles}/>
                 <div>{this.state.tiles}</div>
                 <div>Dice Roll:{dice1}, {dice2}</div>
                 {this.state.gameOver === false ? 
