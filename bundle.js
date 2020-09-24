@@ -298,19 +298,22 @@ var Tiles = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(Tiles);
 
   function Tiles(props) {
-    var _this;
-
     _classCallCheck(this, Tiles);
 
-    _this = _super.call(this, props);
-    console.log('tiles', props);
-    return _this;
+    return _super.call(this, props); // console.log('tiles',props)
   }
 
   _createClass(Tiles, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "these are the tiles");
+      var tiles = this.props.tiles;
+      console.log('tiles', tiles);
+      var count = 0;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, tiles.map(function (el) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: count++
+        }, el);
+      })));
     }
   }]);
 
