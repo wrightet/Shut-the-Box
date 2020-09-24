@@ -12,11 +12,14 @@ class Tiles extends React.Component{
         let count = 0
         return(
             <div>
-                <ul>
+                <form>
                     {tiles.map(el => (
-                        <li key={count++}>{el}</li>
+                        <label htmlFor="">{el}
+                        <input type='radio' value={el}/>
+                        </label>
                     ))}
-                </ul>
+                    <input type='submit'/>
+                </form>
             </div>
         )
     }
