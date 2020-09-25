@@ -52,7 +52,7 @@ class Game extends React.Component{
         return(
             <div>
                 <Tiles tiles={this.state.tiles}/>
-                <div>{this.state.tiles}</div>
+              
                 <div>Dice Roll:{dice1}, {dice2}</div>
                 {this.state.gameOver === false ? 
                 <div>

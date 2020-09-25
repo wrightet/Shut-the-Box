@@ -11,10 +11,10 @@ class Tiles extends React.Component{
         console.log('tiles', tiles)
         let count = 0
         return(
-            <div>
+            <div className='tiles'>
                 <form>
                     {tiles.map(el => (
-                        <label htmlFor="">{el}
+                        <label  key={count++} htmlFor="">{el}
                         <input type='radio' value={el}/>
                         </label>
                     ))}
