@@ -226,20 +226,30 @@ var Game = /*#__PURE__*/function (_React$Component) {
       var num1 = 0;
       var num2 = 0;
       var roll_total = dice1 + dice2;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        tiles: this.state.tiles
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", dice1, ", ", dice2), this.state.gameOver === false ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.chooseTiles((roll_total, this.state.num1, this.state.num2))
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "integer",
-        onChange: function onChange() {
-          return _this3.update('num1');
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "integer",
-        onChange: function onChange() {
-          return _this3.update('num2');
-        }
+      var tiles = this.state.tiles;
+      var count = 0;
+      console.log(this.state.tiles);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", dice1, ", ", dice2), this.state.gameOver === false ?
+      /*#__PURE__*/
+      // <div>
+      //     <form onSubmit={this.chooseTiles((roll_total,this.state.num1, this.state.num2))}>
+      //         <input type="integer"  onChange={() => this.update('num1')}/>
+      //         <input type="integer"  onChange={() => this.update('num2')}/>
+      //         <input type="submit"/>
+      //     </form>
+      // </div>
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tiles"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.chooseTiles(roll_total, num1, num2)
+      }, tiles.map(function (el) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          key: count++,
+          htmlFor: ""
+        }, el, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "radio",
+          value: el
+        }));
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit"
       }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {

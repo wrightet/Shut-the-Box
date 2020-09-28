@@ -48,20 +48,32 @@ class Game extends React.Component{
         let num1 = 0;
         let num2 = 0;
         let roll_total = dice1 + dice2;
-
+        let tiles = this.state.tiles;
+        let count = 0;
+        console.log(this.state.tiles)
         return(
             <div>
-                <Tiles tiles={this.state.tiles}/>
+             
               
                 <div>Dice Roll:{dice1}, {dice2}</div>
                 {this.state.gameOver === false ? 
-                <div>
-                    <form onSubmit={this.chooseTiles((roll_total,this.state.num1, this.state.num2))}>
-                        <input type="integer"  onChange={() => this.update('num1')}/>
-                        <input type="integer"  onChange={() => this.update('num2')}/>
-                        <input type="submit"/>
-                    </form>
-                </div>
+                // <div>
+                //     <form onSubmit={this.chooseTiles((roll_total,this.state.num1, this.state.num2))}>
+                //         <input type="integer"  onChange={() => this.update('num1')}/>
+                //         <input type="integer"  onChange={() => this.update('num2')}/>
+                //         <input type="submit"/>
+                //     </form>
+                // </div>
+                    <div className='tiles'>
+                        <form onSubmit={this.chooseTiles(roll_total, num1, num2)}>
+                            {tiles.map(el => (
+                                <label key={count++} htmlFor="">{el}
+                                    <input type='radio' value={el} />
+                                </label>
+                            ))}
+                            <input type='submit' />
+                        </form>
+                    </div>
                 :
                 <h1>GAME OVER</h1>}
                 {/* <button onClick={() => this.chooseTiles(5, 2, 3)}>choose</button> */}
