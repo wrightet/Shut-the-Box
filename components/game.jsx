@@ -66,11 +66,9 @@ class Game extends React.Component{
                 // </div>
                     <div className='tiles'>
                         <form onSubmit={this.chooseTiles(roll_total, num1, num2)}>
-                            {tiles.map(el => (
-                                <label key={count++} htmlFor="">{el}
-                                    <input type='radio' value={el} />
-                                </label>
-                            ))}
+                        <Tiles
+                            
+                        />
                             <input type='submit' />
                         </form>
                     </div>

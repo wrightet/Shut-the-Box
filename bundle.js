@@ -242,15 +242,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
         className: "tiles"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.chooseTiles(roll_total, num1, num2)
-      }, tiles.map(function (el) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-          key: count++,
-          htmlFor: ""
-        }, el, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-          type: "radio",
-          value: el
-        }));
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["Tiles"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit"
       }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
@@ -293,7 +285,7 @@ var Tile = function Tile(_ref) {
       value = _ref.value;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: ""
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, value, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "radio",
     checked: checked,
     className: "tile",
@@ -305,9 +297,7 @@ var Tile = function Tile(_ref) {
 };
 
 var Tiles = function Tiles(_ref2) {
-  var min = _ref2.min,
-      max = _ref2.max,
-      onChange = _ref2.onChange,
+  var onChange = _ref2.onChange,
       value = _ref2.value;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Range(1, 9).map(function (item) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Tile, {
