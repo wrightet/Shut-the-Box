@@ -1,29 +1,27 @@
 import React from 'react';
+const Range = (min, max) => Array(max - min + 1).fill().map((_, i) => min + i)
 
-class Tiles extends React.Component{
-    constructor(props) {
-        super(props);
-        // console.log('tiles',props)
-    }
-
-    render(){
-        let tiles = this.props.tiles;
-        console.log('tiles', tiles)
-        let count = 0
-        return(
-            <div className='tiles'>
-                <form>
-                    {tiles.map(el => (
-                        <label  key={count++} htmlFor="">{el}
-                        <input type='radio' value={el}/>
-                        </label>
-                    ))}
-                    <input type='submit'/>
-                </form>
-            </div>
-        )
-    }
-    
+const Tile =({checked, onChange, value}) => (
+    <label htmlFor="">
+        <input type="radio"
+        checked={checked}
+        className='tile'
+        onChange={(e) => {onChange(value)}}
+        value={value}
+        />
+    </label>
+)
+export const Tiles = ({min,max,onChange,value}) => {
+    return (
+        <div>
+            {Range(1,9).map(item => (
+                <Tile
+                key={item}
+                checked={value===item}
+                value={item}
+                onChange={onChange}
+                />
+            ))}
+        </div>
+    )
 }
-
-export default Tiles;

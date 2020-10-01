@@ -1,5 +1,5 @@
 import React from 'react';
-import Tiles from './tiles';
+import {Tiles} from './tiles';
 class Game extends React.Component{
     constructor(props) {
         super(props);
