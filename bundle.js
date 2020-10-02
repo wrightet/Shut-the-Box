@@ -172,7 +172,8 @@ var Game = /*#__PURE__*/function (_React$Component) {
     _this.num1 = 0;
     _this.num2 = 0;
     _this.restartGame = _this.restartGame.bind(_assertThisInitialized(_this));
-    _this.chooseTiles = _this.chooseTiles.bind(_assertThisInitialized(_this));
+    _this.chooseTiles = _this.chooseTiles.bind(_assertThisInitialized(_this)); // this.update = this.update.bind(this);
+
     return _this;
   }
 
@@ -212,6 +213,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
     value: function update(field) {
       var _this2 = this;
 
+      console.log('state', this.state[field]);
       return function (e) {
         return _this2.setState(_defineProperty({}, field, e.target.value));
       };
@@ -242,7 +244,9 @@ var Game = /*#__PURE__*/function (_React$Component) {
         className: "tiles"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.chooseTiles(roll_total, num1, num2)
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["Tiles"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["Tiles"], {
+        onChange: this.update('tiles')
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit"
       }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
@@ -283,6 +287,7 @@ var Tile = function Tile(_ref) {
   var checked = _ref.checked,
       _onChange = _ref.onChange,
       value = _ref.value;
+  console.log('value', value);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: ""
   }, value, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -290,15 +295,15 @@ var Tile = function Tile(_ref) {
     checked: checked,
     className: "tile",
     onChange: function onChange(e) {
-      _onChange(value);
+      _onChange(e);
     },
     value: value
   }));
 };
 
 var Tiles = function Tiles(_ref2) {
-  var onChange = _ref2.onChange,
-      value = _ref2.value;
+  var value = _ref2.value,
+      onChange = _ref2.onChange;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Range(1, 9).map(function (item) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Tile, {
       key: item,

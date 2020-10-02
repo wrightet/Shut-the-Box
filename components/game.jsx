@@ -16,6 +16,7 @@ class Game extends React.Component{
         this.num2 = 0;
         this.restartGame = this.restartGame.bind(this);
         this.chooseTiles = this.chooseTiles.bind(this);
+        // this.update = this.update.bind(this);
     }
 
     restartGame(){
@@ -39,6 +40,7 @@ class Game extends React.Component{
 
     }
     update(field){
+        console.log('state',this.state[field])
        return e => this.setState({[field]: e.target.value})
     }
 
@@ -67,7 +69,7 @@ class Game extends React.Component{
                     <div className='tiles'>
                         <form onSubmit={this.chooseTiles(roll_total, num1, num2)}>
                         <Tiles
-                            
+                            onChange={this.update('tiles')}
                         />
                             <input type='submit' />
                         </form>
