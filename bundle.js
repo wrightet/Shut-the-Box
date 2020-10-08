@@ -234,12 +234,10 @@ var Game = /*#__PURE__*/function (_React$Component) {
 
       var dice1 = Math.floor(Math.random() * (7 - 1) + 1);
       var dice2 = Math.floor(Math.random() * (7 - 1) + 1);
-      var num1 = 0;
-      var num2 = 0;
       var roll_total = dice1 + dice2;
       var tiles = this.state.tiles;
       var count = 0;
-      console.log('num1, num2', num1, num2); // console.log(this.state.tiles)
+      console.log('num1, num2', this.state.num1, this.state.num2); // console.log(this.state.tiles)
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", dice1, ", ", dice2), this.state.gameOver === false ?
       /*#__PURE__*/
@@ -252,10 +250,18 @@ var Game = /*#__PURE__*/function (_React$Component) {
       // </div>
       react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tiles"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.chooseTiles(roll_total, num1, num2)
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["Tiles"], {
         onChange: this.update('checked')
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.chooseTiles(roll_total, this.state.num1, this.state.num2)
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.num1,
+        onChange: this.update('num1')
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.num2,
+        onChange: this.update('num2')
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit"
       })), this.chooseTiles( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["Tiles"], null))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {

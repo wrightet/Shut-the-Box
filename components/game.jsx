@@ -58,12 +58,10 @@ class Game extends React.Component{
     render(){
         let dice1 = Math.floor(Math.random() * (7 - 1) + 1);
         let dice2 = Math.floor(Math.random() * (7 - 1) + 1);
-        let num1 = 0;
-        let num2 = 0;
         let roll_total = dice1 + dice2;
         let tiles = this.state.tiles;
         let count = 0;
-        console.log('num1, num2', num1, num2)
+        console.log('num1, num2', this.state.num1, this.state.num2)
         // console.log(this.state.tiles)
         return(
             <div>
@@ -79,10 +77,12 @@ class Game extends React.Component{
                 //     </form>
                 // </div>
                     <div className='tiles'>
-                        <form onSubmit={this.chooseTiles(roll_total, num1, num2)}>
                         <Tiles
                             onChange={this.update('checked')}
                         />
+                        <form onSubmit={this.chooseTiles(roll_total, this.state.num1, this.state.num2)}>
+                            <input type="text" value={this.state.num1} onChange={this.update('num1')}/>
+                            <input type="text" value={this.state.num2} onChange={this.update('num2')}/>
                             <input type='submit' />
                         </form>
                         {this.chooseTiles(<Tiles/>)}
