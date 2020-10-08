@@ -33,15 +33,20 @@ class Game extends React.Component{
 
     chooseTiles(roll_val, num1, num2=0){
        console.log(num1,num2)
+       
        let idx1 = this.state.tiles.indexOf(num1);
        let idx2 = null
        let new_arr = this.state.tiles
+       console.log(roll_val, num1, num2)
        if (num2 !== 0){
+           
            idx2 = this.state.tiles.indexOf(num2);
        }
-       if (num1 + num2 === roll_val){
+       if ((num1 + num2) === roll_val){
            new_arr[idx1] = 0
            if (num2) new_arr[idx2] = 0
+           console.log('new_arr',new_arr)
+          
            this.setState({tiles: new_arr})
        }
 
@@ -52,6 +57,7 @@ class Game extends React.Component{
     // }
 
     update(field) {
+        console.log('field',field)
         return e => this.setState({ [field]: e.target.value })
     }
 

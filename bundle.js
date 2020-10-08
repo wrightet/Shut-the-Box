@@ -201,6 +201,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
       var idx1 = this.state.tiles.indexOf(num1);
       var idx2 = null;
       var new_arr = this.state.tiles;
+      console.log(roll_val, num1, num2);
 
       if (num2 !== 0) {
         idx2 = this.state.tiles.indexOf(num2);
@@ -209,6 +210,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
       if (num1 + num2 === roll_val) {
         new_arr[idx1] = 0;
         if (num2) new_arr[idx2] = 0;
+        console.log('new_arr', new_arr);
         this.setState({
           tiles: new_arr
         });
@@ -223,6 +225,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
     value: function update(field) {
       var _this2 = this;
 
+      console.log('field', field);
       return function (e) {
         return _this2.setState(_defineProperty({}, field, e.target.value));
       };
