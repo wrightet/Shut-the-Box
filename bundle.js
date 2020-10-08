@@ -170,7 +170,9 @@ var Game = /*#__PURE__*/function (_React$Component) {
       tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       gameOver: false,
       num1: 0,
-      num2: 0
+      num2: 0,
+      dice1: 0,
+      dice2: 0
     }; // this.tiles = [1,2,3,4,5,6,7,8,9];
     // this.dice1 = [1,2,3,4,5,6];
     // this.dice2 = [1,2,3,4,5,6];
@@ -184,6 +186,11 @@ var Game = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(Game, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.rollDice();
+    }
+  }, {
     key: "restartGame",
     value: function restartGame() {
       this.setState({
@@ -215,6 +222,16 @@ var Game = /*#__PURE__*/function (_React$Component) {
           tiles: new_arr
         });
       }
+    }
+  }, {
+    key: "rollDice",
+    value: function rollDice() {
+      var one = Math.floor(Math.random() * (7 - 1) + 1);
+      var two = Math.floor(Math.random() * (7 - 1) + 1);
+      this.setState({
+        dice1: one,
+        dice2: two
+      });
     } // update(field){
     //     console.log('state',this.state[field])
     //    return e => this.setState({[field]: e.target.value})
@@ -233,16 +250,12 @@ var Game = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
-      var dice1 = Math.floor(Math.random() * (7 - 1) + 1);
-      var dice2 = Math.floor(Math.random() * (7 - 1) + 1);
-      var roll_total = dice1 + dice2;
+      var roll_total = this.state.dice1 + this.state.dice2;
       var tiles = this.state.tiles;
       var count = 0;
       console.log('num1, num2', this.state.num1, this.state.num2); // console.log(this.state.tiles)
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", dice1, ", ", dice2), this.state.gameOver === false ?
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", this.state.dice1, ", ", this.state.dice2), this.state.gameOver === false ?
       /*#__PURE__*/
       // <div>
       //     <form onSubmit={this.chooseTiles((roll_total,this.state.num1, this.state.num2))}>
@@ -267,11 +280,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
         onChange: this.update('num2')
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit"
-      })), this.chooseTiles( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["Tiles"], null))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this3.restartGame();
-        }
-      }, "restart game"));
+      }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"));
     }
   }]);
 

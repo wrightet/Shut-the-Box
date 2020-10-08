@@ -14,7 +14,9 @@ class Game extends React.Component{
             tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9],
             gameOver: false,
             num1: 0,
-            num2:0
+            num2:0,
+            dice1: 0,
+            dice2: 0,
         }
         // this.tiles = [1,2,3,4,5,6,7,8,9];
         // this.dice1 = [1,2,3,4,5,6];
@@ -26,6 +28,9 @@ class Game extends React.Component{
         // this.update = this.update.bind(this);
     }
 
+    componentDidMount(){
+        this.rollDice()
+    }
     restartGame(){
         this.setState({tiles:[1,2,3,4,5,6,7,8,9]})
         this.setState({ gameOver: false})
@@ -51,6 +56,12 @@ class Game extends React.Component{
        }
 
     }
+
+    rollDice(){
+        let one = Math.floor(Math.random() * (7 - 1) + 1);
+        let two = Math.floor(Math.random() * (7 - 1) + 1);
+        this.setState({dice1:one, dice2:two});
+    }
     // update(field){
     //     console.log('state',this.state[field])
     //    return e => this.setState({[field]: e.target.value})
@@ -62,9 +73,8 @@ class Game extends React.Component{
     }
 
     render(){
-        let dice1 = Math.floor(Math.random() * (7 - 1) + 1);
-        let dice2 = Math.floor(Math.random() * (7 - 1) + 1);
-        let roll_total = dice1 + dice2;
+      
+        let roll_total = this.state.dice1 + this.state.dice2;
         let tiles = this.state.tiles;
         let count = 0;
         console.log('num1, num2', this.state.num1, this.state.num2)
@@ -73,7 +83,7 @@ class Game extends React.Component{
             <div>
              
               
-                <div>Dice Roll:{dice1}, {dice2}</div>
+                <div>Dice Roll:{this.state.dice1}, {this.state.dice2}</div>
                 {this.state.gameOver === false ? 
                 // <div>
                 //     <form onSubmit={this.chooseTiles((roll_total,this.state.num1, this.state.num2))}>
@@ -91,12 +101,13 @@ class Game extends React.Component{
                             <input type="text" value={this.state.num2} onChange={this.update('num2')}/>
                             <input type='submit' />
                         </form>
-                        {this.chooseTiles(<Tiles/>)}
+                        {/* <button onClick={this.rollDice()}>Roll Dice</button> */}
+                        {/* {this.chooseTiles(<Tiles/>)} */}
                     </div>
                 :
                 <h1>GAME OVER</h1>}
                 {/* <button onClick={() => this.chooseTiles(5, 2, 3)}>choose</button> */}
-                <button onClick={() => this.restartGame()}>restart game</button>
+                {/* <button onClick={() => this.restartGame()}>restart game</button> */}
             </div>
        
         )
