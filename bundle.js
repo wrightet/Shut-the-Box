@@ -173,12 +173,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
       num2: 0,
       dice1: 0,
       dice2: 0
-    }; // this.tiles = [1,2,3,4,5,6,7,8,9];
-    // this.dice1 = [1,2,3,4,5,6];
-    // this.dice2 = [1,2,3,4,5,6];
-
-    _this.num1 = 0;
-    _this.num2 = 0;
+    };
     _this.restartGame = _this.restartGame.bind(_assertThisInitialized(_this));
     _this.chooseTiles = _this.chooseTiles.bind(_assertThisInitialized(_this)); // this.update = this.update.bind(this);
 
@@ -188,7 +183,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
   _createClass(Game, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.rollDice();
+      console.log('dice', this.rollDice());
     }
   }, {
     key: "restartGame",
@@ -204,7 +199,8 @@ var Game = /*#__PURE__*/function (_React$Component) {
     key: "chooseTiles",
     value: function chooseTiles(roll_val, num1) {
       var num2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-      console.log(num1, num2);
+      num1 = parseInt(num1);
+      num2 = parseInt(num2);
       var idx1 = this.state.tiles.indexOf(num1);
       var idx2 = null;
       var new_arr = this.state.tiles;
@@ -253,8 +249,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
       var roll_total = this.state.dice1 + this.state.dice2;
       var tiles = this.state.tiles;
       var count = 0;
-      console.log('num1, num2', this.state.num1, this.state.num2); // console.log(this.state.tiles)
-
+      console.log('num1, num2', this.state.num1, this.state.num2);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", this.state.dice1, ", ", this.state.dice2), this.state.gameOver === false ?
       /*#__PURE__*/
       // <div>

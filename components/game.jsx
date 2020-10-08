@@ -18,18 +18,13 @@ class Game extends React.Component{
             dice1: 0,
             dice2: 0,
         }
-        // this.tiles = [1,2,3,4,5,6,7,8,9];
-        // this.dice1 = [1,2,3,4,5,6];
-        // this.dice2 = [1,2,3,4,5,6];
-        this.num1 = 0;
-        this.num2 = 0;
         this.restartGame = this.restartGame.bind(this);
         this.chooseTiles = this.chooseTiles.bind(this);
         // this.update = this.update.bind(this);
     }
 
     componentDidMount(){
-        this.rollDice()
+       console.log('dice',this.rollDice())
     }
     restartGame(){
         this.setState({tiles:[1,2,3,4,5,6,7,8,9]})
@@ -37,8 +32,9 @@ class Game extends React.Component{
     }
 
     chooseTiles(roll_val, num1, num2=0){
-       console.log(num1,num2)
        
+       num1 = parseInt(num1)
+       num2 = parseInt(num2)
        let idx1 = this.state.tiles.indexOf(num1);
        let idx2 = null
        let new_arr = this.state.tiles
@@ -78,7 +74,7 @@ class Game extends React.Component{
         let tiles = this.state.tiles;
         let count = 0;
         console.log('num1, num2', this.state.num1, this.state.num2)
-        // console.log(this.state.tiles)
+       
         return(
             <div>
              
