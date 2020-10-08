@@ -2,7 +2,7 @@ import React from 'react';
 const Range = (min, max) => Array(max - min + 1).fill().map((_, i) => min + i)
 
 const Tile =({checked, onChange, value}) => {
-  
+    console.log(checked)
     return(
     <label htmlFor="">
         {value}

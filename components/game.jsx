@@ -46,9 +46,13 @@ class Game extends React.Component{
        }
 
     }
-    update(field){
-        console.log('state',this.state[field])
-       return e => this.setState({[field]: e.target.value})
+    // update(field){
+    //     console.log('state',this.state[field])
+    //    return e => this.setState({[field]: e.target.value})
+    // }
+
+    update(field) {
+        return e => this.setState({ [field]: e.target.value })
     }
 
     render(){
@@ -59,7 +63,8 @@ class Game extends React.Component{
         let roll_total = dice1 + dice2;
         let tiles = this.state.tiles;
         let count = 0;
-        console.log(this.state.tiles)
+        console.log('num1, num2', num1, num2)
+        // console.log(this.state.tiles)
         return(
             <div>
              
@@ -76,7 +81,7 @@ class Game extends React.Component{
                     <div className='tiles'>
                         <form onSubmit={this.chooseTiles(roll_total, num1, num2)}>
                         <Tiles
-                            onChange={this.update('tiles')}
+                            onChange={this.update('checked')}
                         />
                             <input type='submit' />
                         </form>

@@ -213,13 +213,16 @@ var Game = /*#__PURE__*/function (_React$Component) {
           tiles: new_arr
         });
       }
-    }
+    } // update(field){
+    //     console.log('state',this.state[field])
+    //    return e => this.setState({[field]: e.target.value})
+    // }
+
   }, {
     key: "update",
     value: function update(field) {
       var _this2 = this;
 
-      console.log('state', this.state[field]);
       return function (e) {
         return _this2.setState(_defineProperty({}, field, e.target.value));
       };
@@ -236,7 +239,8 @@ var Game = /*#__PURE__*/function (_React$Component) {
       var roll_total = dice1 + dice2;
       var tiles = this.state.tiles;
       var count = 0;
-      console.log(this.state.tiles);
+      console.log('num1, num2', num1, num2); // console.log(this.state.tiles)
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", dice1, ", ", dice2), this.state.gameOver === false ?
       /*#__PURE__*/
       // <div>
@@ -251,7 +255,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.chooseTiles(roll_total, num1, num2)
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["Tiles"], {
-        onChange: this.update('tiles')
+        onChange: this.update('checked')
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit"
       })), this.chooseTiles( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["Tiles"], null))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -293,6 +297,7 @@ var Tile = function Tile(_ref) {
   var checked = _ref.checked,
       _onChange = _ref.onChange,
       value = _ref.value;
+  console.log(checked);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: ""
   }, value, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
