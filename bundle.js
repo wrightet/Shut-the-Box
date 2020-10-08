@@ -149,6 +149,12 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+var twoSelected = function twoSelected(tiles) {
+  tiles.forEach(function (el) {
+    console.log(el);
+  });
+};
+
 var Game = /*#__PURE__*/function (_React$Component) {
   _inherits(Game, _React$Component);
 
@@ -248,7 +254,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
         onChange: this.update('tiles')
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit"
-      }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), this.chooseTiles( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["Tiles"], null))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this3.restartGame();
         }
@@ -287,7 +293,6 @@ var Tile = function Tile(_ref) {
   var checked = _ref.checked,
       _onChange = _ref.onChange,
       value = _ref.value;
-  console.log('value', value);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: ""
   }, value, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {

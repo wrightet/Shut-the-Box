@@ -1,5 +1,12 @@
 import React from 'react';
 import {Tiles} from './tiles';
+
+const twoSelected = (tiles) => {
+
+    tiles.forEach(el => {
+        console.log(el)
+    })
+}
 class Game extends React.Component{
     constructor(props) {
         super(props);
@@ -73,6 +80,7 @@ class Game extends React.Component{
                         />
                             <input type='submit' />
                         </form>
+                        {this.chooseTiles(<Tiles/>)}
                     </div>
                 :
                 <h1>GAME OVER</h1>}
