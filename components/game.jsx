@@ -1,12 +1,6 @@
 import React from 'react';
 import {TilesToo} from './tiles';
 
-const twoSelected = (tiles) => {
-
-    tiles.forEach(el => {
-        console.log(el)
-    })
-}
 class Game extends React.Component{
     constructor(props) {
         super(props);
@@ -28,6 +22,7 @@ class Game extends React.Component{
     }
   
     restartGame(){
+        console.log('restart')
         this.setState({tiles:[1,2,3,4,5,6,7,8,9]})
         this.setState({ gameOver: false})
     }
@@ -64,10 +59,7 @@ class Game extends React.Component{
         let two = Math.floor(Math.random() * (7 - 1) + 1);
         this.setState({dice1:one, dice2:two});
     }
-    // update(field){
-    //     console.log('state',this.state[field])
-    //    return e => this.setState({[field]: e.target.value})
-    // }
+
 
     update(field) {
         
@@ -77,8 +69,6 @@ class Game extends React.Component{
     render(){
       
         let roll_total = this.state.dice1 + this.state.dice2;
-        let tiles = this.state.tiles;
-        let count = 0;
         console.log(this.state.tiles)
        
         return(
@@ -112,9 +102,13 @@ class Game extends React.Component{
                         {/* {this.chooseTiles(<Tiles/>)} */}
                     </div>
                 :
-                <h1>GAME OVER</h1>}
-                {/* <button onClick={() => this.chooseTiles(5, 2, 3)}>choose</button> */}
-                {/* <button onClick={() => this.restartGame()}>restart game</button> */}
+                <div>
+                        <h1>GAME OVER</h1>
+
+                        <button onClick={() => this.restartGame()}>restart game</button>
+                </div>
+              
+                    }
             </div>
        
         )

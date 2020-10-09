@@ -149,12 +149,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var twoSelected = function twoSelected(tiles) {
-  tiles.forEach(function (el) {
-    console.log(el);
-  });
-};
-
 var Game = /*#__PURE__*/function (_React$Component) {
   _inherits(Game, _React$Component);
 
@@ -188,6 +182,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "restartGame",
     value: function restartGame() {
+      console.log('restart');
       this.setState({
         tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9]
       });
@@ -231,11 +226,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
         dice1: one,
         dice2: two
       });
-    } // update(field){
-    //     console.log('state',this.state[field])
-    //    return e => this.setState({[field]: e.target.value})
-    // }
-
+    }
   }, {
     key: "update",
     value: function update(field) {
@@ -251,8 +242,6 @@ var Game = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       var roll_total = this.state.dice1 + this.state.dice2;
-      var tiles = this.state.tiles;
-      var count = 0;
       console.log(this.state.tiles);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "master"
@@ -288,7 +277,11 @@ var Game = /*#__PURE__*/function (_React$Component) {
         type: "submit"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "dice"
-      }, "Dice Roll:", this.state.dice1, ", ", this.state.dice2)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"));
+      }, "Dice Roll:", this.state.dice1, ", ", this.state.dice2)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.restartGame();
+        }
+      }, "restart game")));
     }
   }]);
 
