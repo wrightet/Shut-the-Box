@@ -1,6 +1,7 @@
 .tiles{
     display:flex;
     justify-content: center;
+    flex-direction: row;
    
 }
 
@@ -11,10 +12,16 @@
 .tile-form{
     display: flex;
     flex-direction: column;
+    width: 5vw;
+    margin: auto;
 
 }
+.dice{
+    margin: auto;
+    display:flex;
+}
 
-.master{
+#master{
     display: flex;
-    flex-direction: column;
+    
 }

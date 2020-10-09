@@ -47,6 +47,7 @@ export class TilesToo extends React.Component{
             <div className='tiles'>
                 {Range(1,9).map(item => (
                 <div
+                    className='indiv-tile'
                     key={item}
                     // checked={value === item}
                     value={item}

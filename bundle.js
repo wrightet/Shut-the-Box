@@ -251,7 +251,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
       var count = 0;
       console.log('num1, num2', this.state.num1, this.state.num2);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "master"
+        id: "master"
       }, this.state.gameOver === false ?
       /*#__PURE__*/
       // <div>
@@ -262,7 +262,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
       //     </form>
       // </div>
       react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tiles"
+        className: "tiles-master"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["TilesToo"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "file-form-master"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -402,6 +402,7 @@ var TilesToo = /*#__PURE__*/function (_React$Component) {
         className: "tiles"
       }, Range(1, 9).map(function (item) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "indiv-tile",
           key: item // checked={value === item}
           ,
           value: item,

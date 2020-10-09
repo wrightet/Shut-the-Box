@@ -76,7 +76,7 @@ class Game extends React.Component{
         console.log('num1, num2', this.state.num1, this.state.num2)
        
         return(
-            <div className='master'>
+            <div id='master'>
              
               
                
@@ -88,7 +88,7 @@ class Game extends React.Component{
                 //         <input type="submit"/>
                 //     </form>
                 // </div>
-                    <div className='tiles'>
+                    <div className='tiles-master'>
                         {/* <Tiles
                             onChange={this.update('checked')}
                         /> */}
