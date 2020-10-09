@@ -48,7 +48,7 @@ export class TilesToo extends React.Component{
     render(){
         return(
             <div className='tiles'>
-                {Range(1,9).map(item => (
+                {this.props.tiles.map(item => (
                 <div
                     className='indiv-tile'
                     key={item}

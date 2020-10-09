@@ -98,7 +98,7 @@ class Game extends React.Component{
                         {/* <Tiles
                             onChange={this.update('checked')}
                         /> */}
-                        <TilesToo/>
+                        <TilesToo tiles={this.state.tiles}/>
                         <div className='file-form-master'>
                             <form className='tile-form' onSubmit={() => this.chooseTiles(roll_total, this.state.num1, this.state.num2)}>
                                 <input type="text" value={this.state.num1} onChange={this.update('num1')} />
