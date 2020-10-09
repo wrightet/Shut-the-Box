@@ -1,5 +1,5 @@
 import React from 'react';
-import {Tiles, TilesToo} from './tiles';
+import {TilesToo} from './tiles';
 
 const twoSelected = (tiles) => {
 
@@ -24,8 +24,9 @@ class Game extends React.Component{
     }
 
     componentDidMount(){
-       console.log('dice',this.rollDice())
+       this.rollDice()
     }
+  
     restartGame(){
         this.setState({tiles:[1,2,3,4,5,6,7,8,9]})
         this.setState({ gameOver: false})
@@ -39,6 +40,10 @@ class Game extends React.Component{
        let idx2 = null
        let new_arr = this.state.tiles
        console.log(roll_val, num1, num2)
+       if (num1 !== roll_val){
+        //    return <div>please choose one or two numbers that add to the combined dice roll</div>
+        console.log('please choose one or two numbers that add to the combined dice roll')
+       }
        if (num2 !== 0){
            
            idx2 = this.state.tiles.indexOf(num2);
@@ -50,6 +55,7 @@ class Game extends React.Component{
           
            this.setState({tiles: new_arr})
        }
+
 
     }
 

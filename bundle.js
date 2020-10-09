@@ -183,7 +183,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
   _createClass(Game, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('dice', this.rollDice());
+      this.rollDice();
     }
   }, {
     key: "restartGame",
@@ -205,6 +205,11 @@ var Game = /*#__PURE__*/function (_React$Component) {
       var idx2 = null;
       var new_arr = this.state.tiles;
       console.log(roll_val, num1, num2);
+
+      if (num1 !== roll_val) {
+        //    return <div>please choose one or two numbers that add to the combined dice roll</div>
+        console.log('please choose one or two numbers that add to the combined dice roll');
+      }
 
       if (num2 !== 0) {
         idx2 = this.state.tiles.indexOf(num2);
@@ -295,12 +300,11 @@ var Game = /*#__PURE__*/function (_React$Component) {
 /*!******************************!*\
   !*** ./components/tiles.jsx ***!
   \******************************/
-/*! exports provided: Tiles, TilesToo */
+/*! exports provided: TilesToo */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tiles", function() { return Tiles; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TilesToo", function() { return TilesToo; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -334,38 +338,36 @@ var Range = function Range(min, max) {
   return Array(max - min + 1).fill().map(function (_, i) {
     return min + i;
   });
-};
+}; // const Tile =({checked, onChange, value}) => {
+//     console.log(checked)
+//     return(
+//     <label htmlFor="">
+//         {value}
+//         <input type="radio"
+//         checked={checked}
+//         className='tile'
+//         onChange={(e) => {onChange(e)}}
+//         value={value}
+//         />
+//     </label>
+//     )
+// }
+// export const Tiles = ({value, onChange}) => {
+//     return (
+//         <div>
+//             {Range(1,9).map(item => (
+//                 <Tile
+//                 key={item}
+//                 checked={value===item}
+//                 value={item}
+//                 onChange={onChange}
+//                 />
+//             ))}
+//         </div>
+//     )
+// }
 
-var Tile = function Tile(_ref) {
-  var checked = _ref.checked,
-      _onChange = _ref.onChange,
-      value = _ref.value;
-  console.log(checked);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: ""
-  }, value, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "radio",
-    checked: checked,
-    className: "tile",
-    onChange: function onChange(e) {
-      _onChange(e);
-    },
-    value: value
-  }));
-};
 
-var Tiles = function Tiles(_ref2) {
-  var value = _ref2.value,
-      onChange = _ref2.onChange;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, Range(1, 9).map(function (item) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Tile, {
-      key: item,
-      checked: value === item,
-      value: item,
-      onChange: onChange
-    });
-  }));
-};
 var TilesToo = /*#__PURE__*/function (_React$Component) {
   _inherits(TilesToo, _React$Component);
 
@@ -384,6 +386,11 @@ var TilesToo = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(TilesToo, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log('update');
+    }
+  }, {
     key: "update",
     value: function update(field) {
       var _this2 = this;
