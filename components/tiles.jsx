@@ -42,7 +42,7 @@ export class TilesToo extends React.Component{
         console.log('update')
     }
     update(field) {
-        console.log('field', field)
+       
         return e => this.setState({ [field]: e.target.value })
     }
     render(){

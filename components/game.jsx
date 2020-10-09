@@ -39,7 +39,7 @@ class Game extends React.Component{
        let idx1 = this.state.tiles.indexOf(num1);
        let idx2 = null
        let new_arr = this.state.tiles
-       console.log(roll_val, num1, num2)
+
        if (num1 !== roll_val){
         //    return <div>please choose one or two numbers that add to the combined dice roll</div>
         console.log('please choose one or two numbers that add to the combined dice roll')
@@ -51,7 +51,7 @@ class Game extends React.Component{
        if ((num1 + num2) === roll_val){
            new_arr[idx1] = 0
            if (num2) new_arr[idx2] = 0
-           console.log('new_arr',new_arr)
+         
           
            this.setState({tiles: new_arr})
        }
@@ -70,7 +70,7 @@ class Game extends React.Component{
     // }
 
     update(field) {
-        console.log('field',field)
+        
         return e => this.setState({ [field]: e.target.value })
     }
 
@@ -79,7 +79,7 @@ class Game extends React.Component{
         let roll_total = this.state.dice1 + this.state.dice2;
         let tiles = this.state.tiles;
         let count = 0;
-        console.log('num1, num2', this.state.num1, this.state.num2)
+        console.log(this.state.tiles)
        
         return(
             <div id='master'>
@@ -100,7 +100,7 @@ class Game extends React.Component{
                         /> */}
                         <TilesToo/>
                         <div className='file-form-master'>
-                            <form className='tile-form' onSubmit={this.chooseTiles(roll_total, this.state.num1, this.state.num2)}>
+                            <form className='tile-form' onSubmit={() => this.chooseTiles(roll_total, this.state.num1, this.state.num2)}>
                                 <input type="text" value={this.state.num1} onChange={this.update('num1')} />
                                 <input type="text" value={this.state.num2} onChange={this.update('num2')} />
                                 <input type='submit' />
