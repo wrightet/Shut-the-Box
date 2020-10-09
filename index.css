@@ -16,9 +16,10 @@
     margin: auto;
 
 }
-.dice{
-    margin: auto;
+#dice{
+    margin-left: 27vw;
     display:flex;
+    margin-top: 3vh;
 }
 
 #master{

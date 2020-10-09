@@ -101,7 +101,7 @@ class Game extends React.Component{
                             </form>
                         </div>
                   
-                        <div className='dice'>Dice Roll:{this.state.dice1}, {this.state.dice2}</div>
+                        <div id='dice'>Dice Roll:{this.state.dice1}, {this.state.dice2}</div>
                         {/* <button onClick={this.rollDice()}>Roll Dice</button> */}
                         {/* {this.chooseTiles(<Tiles/>)} */}
                     </div>
