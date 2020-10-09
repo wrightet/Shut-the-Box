@@ -29,3 +29,35 @@ export const Tiles = ({value, onChange}) => {
         </div>
     )
 }
+
+export class TilesToo extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            value:null
+        }
+        
+    }
+    update(field) {
+        console.log('field', field)
+        return e => this.setState({ [field]: e.target.value })
+    }
+    render(){
+        return(
+            <div className='tiles'>
+                {Range(1,9).map(item => (
+                <div
+                    key={item}
+                    // checked={value === item}
+                    value={item}
+                    onChange={this.update()}
+                >
+                    {item}
+                </div>
+            ))}
+            </div>
+        )
+    }
+    
+}
+

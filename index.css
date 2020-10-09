@@ -1,4 +1,9 @@
 .tiles{
     display:flex;
     justify-content: center;
+   
+}
+
+.tiles > div {
+     padding: 3vw;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Tiles} from './tiles';
+import {Tiles, TilesToo} from './tiles';
 
 const twoSelected = (tiles) => {
 
@@ -79,7 +79,7 @@ class Game extends React.Component{
             <div>
              
               
-                <div>Dice Roll:{this.state.dice1}, {this.state.dice2}</div>
+               
                 {this.state.gameOver === false ? 
                 // <div>
                 //     <form onSubmit={this.chooseTiles((roll_total,this.state.num1, this.state.num2))}>
@@ -89,14 +89,16 @@ class Game extends React.Component{
                 //     </form>
                 // </div>
                     <div className='tiles'>
-                        <Tiles
+                        {/* <Tiles
                             onChange={this.update('checked')}
-                        />
-                        <form onSubmit={this.chooseTiles(roll_total, this.state.num1, this.state.num2)}>
+                        /> */}
+                        <TilesToo/>
+                        <form className = 'tile-form' onSubmit={this.chooseTiles(roll_total, this.state.num1, this.state.num2)}>
                             <input type="text" value={this.state.num1} onChange={this.update('num1')}/>
                             <input type="text" value={this.state.num2} onChange={this.update('num2')}/>
                             <input type='submit' />
                         </form>
+                        <div>Dice Roll:{this.state.dice1}, {this.state.dice2}</div>
                         {/* <button onClick={this.rollDice()}>Roll Dice</button> */}
                         {/* {this.chooseTiles(<Tiles/>)} */}
                     </div>
