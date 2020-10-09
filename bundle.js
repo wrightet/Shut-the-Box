@@ -250,7 +250,9 @@ var Game = /*#__PURE__*/function (_React$Component) {
       var tiles = this.state.tiles;
       var count = 0;
       console.log('num1, num2', this.state.num1, this.state.num2);
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.gameOver === false ?
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "master"
+      }, this.state.gameOver === false ?
       /*#__PURE__*/
       // <div>
       //     <form onSubmit={this.chooseTiles((roll_total,this.state.num1, this.state.num2))}>
@@ -261,7 +263,9 @@ var Game = /*#__PURE__*/function (_React$Component) {
       // </div>
       react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tiles"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["TilesToo"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["TilesToo"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "file-form-master"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "tile-form",
         onSubmit: this.chooseTiles(roll_total, this.state.num1, this.state.num2)
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -274,7 +278,9 @@ var Game = /*#__PURE__*/function (_React$Component) {
         onChange: this.update('num2')
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll:", this.state.dice1, ", ", this.state.dice2)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dice"
+      }, "Dice Roll:", this.state.dice1, ", ", this.state.dice2)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"));
     }
   }]);
 

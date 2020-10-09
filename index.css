@@ -7,3 +7,14 @@
 .tiles > div {
      padding: 3vw;
 }
+
+.tile-form{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.master{
+    display: flex;
+    flex-direction: column;
+}

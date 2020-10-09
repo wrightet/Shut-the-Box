@@ -76,7 +76,7 @@ class Game extends React.Component{
         console.log('num1, num2', this.state.num1, this.state.num2)
        
         return(
-            <div>
+            <div className='master'>
              
               
                
@@ -93,12 +93,15 @@ class Game extends React.Component{
                             onChange={this.update('checked')}
                         /> */}
                         <TilesToo/>
-                        <form className = 'tile-form' onSubmit={this.chooseTiles(roll_total, this.state.num1, this.state.num2)}>
-                            <input type="text" value={this.state.num1} onChange={this.update('num1')}/>
-                            <input type="text" value={this.state.num2} onChange={this.update('num2')}/>
-                            <input type='submit' />
-                        </form>
-                        <div>Dice Roll:{this.state.dice1}, {this.state.dice2}</div>
+                        <div className='file-form-master'>
+                            <form className='tile-form' onSubmit={this.chooseTiles(roll_total, this.state.num1, this.state.num2)}>
+                                <input type="text" value={this.state.num1} onChange={this.update('num1')} />
+                                <input type="text" value={this.state.num2} onChange={this.update('num2')} />
+                                <input type='submit' />
+                            </form>
+                        </div>
+                  
+                        <div className='dice'>Dice Roll:{this.state.dice1}, {this.state.dice2}</div>
                         {/* <button onClick={this.rollDice()}>Roll Dice</button> */}
                         {/* {this.chooseTiles(<Tiles/>)} */}
                     </div>
