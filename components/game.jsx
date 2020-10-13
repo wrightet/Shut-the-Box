@@ -19,6 +19,7 @@ class Game extends React.Component{
 
     componentDidMount(){
        this.rollDice()
+       
     }
   
     restartGame(){
@@ -49,6 +50,7 @@ class Game extends React.Component{
          
           
            this.setState({tiles: new_arr})
+           
        }
 
 
@@ -69,7 +71,7 @@ class Game extends React.Component{
     render(){
       
         let roll_total = this.state.dice1 + this.state.dice2;
-        console.log(this.state.tiles)
+        console.log('state',this.state.tiles)
        
         return(
             <div id='master'>
@@ -77,17 +79,9 @@ class Game extends React.Component{
               
                
                 {this.state.gameOver === false ? 
-                // <div>
-                //     <form onSubmit={this.chooseTiles((roll_total,this.state.num1, this.state.num2))}>
-                //         <input type="integer"  onChange={() => this.update('num1')}/>
-                //         <input type="integer"  onChange={() => this.update('num2')}/>
-                //         <input type="submit"/>
-                //     </form>
-                // </div>
+          
                     <div className='tiles-master'>
-                        {/* <Tiles
-                            onChange={this.update('checked')}
-                        /> */}
+                
                         <TilesToo tiles={this.state.tiles}/>
                         <div className='file-form-master'>
                             <form className='tile-form' onSubmit={() => this.chooseTiles(roll_total, this.state.num1, this.state.num2)}>
@@ -98,8 +92,7 @@ class Game extends React.Component{
                         </div>
                   
                         <div id='dice'>Dice Roll:{this.state.dice1}, {this.state.dice2}</div>
-                        {/* <button onClick={this.rollDice()}>Roll Dice</button> */}
-                        {/* {this.chooseTiles(<Tiles/>)} */}
+               
                     </div>
                 :
                 <div>

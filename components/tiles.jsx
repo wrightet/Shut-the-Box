@@ -40,7 +40,9 @@ export class TilesToo extends React.Component{
     }
     componentDidMount(){
         console.log('update')
+        console.log(this.props)
     }
+ 
     update(field) {
        
         return e => this.setState({ [field]: e.target.value })
@@ -54,7 +56,7 @@ export class TilesToo extends React.Component{
                     key={item}
                     // checked={value === item}
                     value={item}
-                    onChange={this.update()}
+                    // onChange={this.update()}
                 >
                     {item}
                 </div>

@@ -242,19 +242,10 @@ var Game = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       var roll_total = this.state.dice1 + this.state.dice2;
-      console.log(this.state.tiles);
+      console.log('state', this.state.tiles);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "master"
-      }, this.state.gameOver === false ?
-      /*#__PURE__*/
-      // <div>
-      //     <form onSubmit={this.chooseTiles((roll_total,this.state.num1, this.state.num2))}>
-      //         <input type="integer"  onChange={() => this.update('num1')}/>
-      //         <input type="integer"  onChange={() => this.update('num2')}/>
-      //         <input type="submit"/>
-      //     </form>
-      // </div>
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.gameOver === false ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tiles-master"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["TilesToo"], {
         tiles: this.state.tiles
@@ -385,6 +376,7 @@ var TilesToo = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       console.log('update');
+      console.log(this.props);
     }
   }, {
     key: "update",
@@ -398,8 +390,6 @@ var TilesToo = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tiles"
       }, this.props.tiles.map(function (item) {
@@ -407,8 +397,8 @@ var TilesToo = /*#__PURE__*/function (_React$Component) {
           className: "indiv-tile",
           key: item // checked={value === item}
           ,
-          value: item,
-          onChange: _this3.update()
+          value: item // onChange={this.update()}
+
         }, item);
       }));
     }
