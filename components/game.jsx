@@ -6,6 +6,7 @@ class Game extends React.Component{
         super(props);
         this.state = {
             tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            // tiles: [0,0],
             gameOver: false,
             num1: 0,
             num2:0,
@@ -19,6 +20,7 @@ class Game extends React.Component{
 
     componentDidMount(){
        this.rollDice()
+       this.endGame()
        console.log('mount',this.state.tiles)
     }
   
@@ -29,7 +31,7 @@ class Game extends React.Component{
     }
 
     endGame(){
-        count = 0
+        let count = 0
         let len = this.state.tiles.length;
         this.state.tiles.forEach(el => {
             if (el === 0){count++}
@@ -89,7 +91,7 @@ class Game extends React.Component{
             <div id='master'>
              
               
-               
+              
                 {this.state.gameOver === false ? 
           
                     <div className='tiles-master'>

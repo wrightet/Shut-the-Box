@@ -162,6 +162,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      // tiles: [0,0],
       gameOver: false,
       num1: 0,
       num2: 0,
@@ -178,6 +179,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.rollDice();
+      this.endGame();
       console.log('mount', this.state.tiles);
     }
   }, {
@@ -192,7 +194,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "endGame",
     value: function endGame() {
-      count = 0;
+      var count = 0;
       var len = this.state.tiles.length;
       this.state.tiles.forEach(function (el) {
         if (el === 0) {
