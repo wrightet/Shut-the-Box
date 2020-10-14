@@ -190,6 +190,23 @@ var Game = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "endGame",
+    value: function endGame() {
+      count = 0;
+      var len = this.state.tiles.length;
+      this.state.tiles.forEach(function (el) {
+        if (el === 0) {
+          count++;
+        }
+      });
+
+      if (count === len) {
+        this.setState({
+          gameOver: true
+        });
+      }
+    }
+  }, {
     key: "chooseTiles",
     value: function chooseTiles(roll_val, num1) {
       var num2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;

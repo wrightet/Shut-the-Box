@@ -28,6 +28,17 @@ class Game extends React.Component{
         this.setState({ gameOver: false})
     }
 
+    endGame(){
+        count = 0
+        let len = this.state.tiles.length;
+        this.state.tiles.forEach(el => {
+            if (el === 0){count++}
+        })
+        if(count === len){
+            this.setState({gameOver:true})
+        }
+    }
+
     chooseTiles(roll_val, num1, num2=0){
        
        num1 = parseInt(num1)
