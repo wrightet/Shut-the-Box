@@ -19,12 +19,12 @@ class Game extends React.Component{
 
     componentDidMount(){
        this.rollDice()
-       
+       console.log('mount',this.state.tiles)
     }
   
     restartGame(){
         console.log('restart')
-        this.setState({tiles:[1,2,3,4,5,6,7,8,9]})
+        // this.setState({tiles:[1,2,3,4,5,6,7,8,9]})
         this.setState({ gameOver: false})
     }
 
@@ -45,10 +45,11 @@ class Game extends React.Component{
            idx2 = this.state.tiles.indexOf(num2);
        }
        if ((num1 + num2) === roll_val){
+          
            new_arr[idx1] = 0
            if (num2) new_arr[idx2] = 0
+         console.log('new_arr',new_arr)
          
-          
            this.setState({tiles: new_arr})
            
        }

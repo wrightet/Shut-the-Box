@@ -178,14 +178,13 @@ var Game = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.rollDice();
+      console.log('mount', this.state.tiles);
     }
   }, {
     key: "restartGame",
     value: function restartGame() {
-      console.log('restart');
-      this.setState({
-        tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-      });
+      console.log('restart'); // this.setState({tiles:[1,2,3,4,5,6,7,8,9]})
+
       this.setState({
         gameOver: false
       });
@@ -212,6 +211,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
       if (num1 + num2 === roll_val) {
         new_arr[idx1] = 0;
         if (num2) new_arr[idx2] = 0;
+        console.log('new_arr', new_arr);
         this.setState({
           tiles: new_arr
         });
@@ -332,10 +332,16 @@ var Tiles = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      value: null
+      tiles: _this.props.tiles
     };
     return _this;
-  }
+  } // componentDidUpdate(){
+  //     debugger
+  //     console.log('update')
+  //     console.log(this.props.tiles)
+  //     console.log(this.state.tiles)
+  // }
+
 
   _createClass(Tiles, [{
     key: "update",
@@ -351,12 +357,13 @@ var Tiles = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       console.log(this.props); // debugger
 
+      var count = 0;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tiles"
       }, this.props.tiles.map(function (item) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "indiv-tile",
-          key: item // checked={value === item}
+          key: count++ // checked={value === item}
           ,
           value: item // onChange={this.update()}
 
