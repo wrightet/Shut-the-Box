@@ -1,5 +1,5 @@
 import React from 'react';
-import {TilesToo} from './tiles';
+import {Tiles} from './tiles';
 
 class Game extends React.Component{
     constructor(props) {
@@ -82,7 +82,7 @@ class Game extends React.Component{
           
                     <div className='tiles-master'>
                 
-                        <TilesToo tiles={this.state.tiles}/>
+                        <Tiles tiles={this.state.tiles}/>
                         <div className='file-form-master'>
                             <form className='tile-form' onSubmit={() => this.chooseTiles(roll_total, this.state.num1, this.state.num2)}>
                                 <input type="text" value={this.state.num1} onChange={this.update('num1')} />

@@ -247,7 +247,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
         id: "master"
       }, this.state.gameOver === false ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tiles-master"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["TilesToo"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["Tiles"], {
         tiles: this.state.tiles
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "file-form-master"
@@ -287,12 +287,12 @@ var Game = /*#__PURE__*/function (_React$Component) {
 /*!******************************!*\
   !*** ./components/tiles.jsx ***!
   \******************************/
-/*! exports provided: TilesToo */
+/*! exports provided: Tiles */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TilesToo", function() { return TilesToo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tiles", function() { return Tiles; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -320,50 +320,15 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
+var Tiles = /*#__PURE__*/function (_React$Component) {
+  _inherits(Tiles, _React$Component);
 
-var Range = function Range(min, max) {
-  return Array(max - min + 1).fill().map(function (_, i) {
-    return min + i;
-  });
-}; // const Tile =({checked, onChange, value}) => {
-//     console.log(checked)
-//     return(
-//     <label htmlFor="">
-//         {value}
-//         <input type="radio"
-//         checked={checked}
-//         className='tile'
-//         onChange={(e) => {onChange(e)}}
-//         value={value}
-//         />
-//     </label>
-//     )
-// }
-// export const Tiles = ({value, onChange}) => {
-//     return (
-//         <div>
-//             {Range(1,9).map(item => (
-//                 <Tile
-//                 key={item}
-//                 checked={value===item}
-//                 value={item}
-//                 onChange={onChange}
-//                 />
-//             ))}
-//         </div>
-//     )
-// }
+  var _super = _createSuper(Tiles);
 
-
-var TilesToo = /*#__PURE__*/function (_React$Component) {
-  _inherits(TilesToo, _React$Component);
-
-  var _super = _createSuper(TilesToo);
-
-  function TilesToo(props) {
+  function Tiles(props) {
     var _this;
 
-    _classCallCheck(this, TilesToo);
+    _classCallCheck(this, Tiles);
 
     _this = _super.call(this, props);
     _this.state = {
@@ -372,13 +337,7 @@ var TilesToo = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(TilesToo, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      console.log('update');
-      console.log(this.props);
-    }
-  }, {
+  _createClass(Tiles, [{
     key: "update",
     value: function update(field) {
       var _this2 = this;
@@ -390,6 +349,8 @@ var TilesToo = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      console.log(this.props); // debugger
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tiles"
       }, this.props.tiles.map(function (item) {
@@ -404,7 +365,7 @@ var TilesToo = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return TilesToo;
+  return Tiles;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /***/ }),
