@@ -99,13 +99,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./main */ "./main.jsx");
+/* harmony import */ var _components_game__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/game */ "./components/game.jsx");
 
 
 
 document.addEventListener('DOMContentLoaded', function () {
   var root = document.getElementById('root');
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_main__WEBPACK_IMPORTED_MODULE_2__["default"], null), root);
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_game__WEBPACK_IMPORTED_MODULE_2__["default"], null), root);
 });
 
 /***/ }),
@@ -159,7 +159,8 @@ var Game = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, Game);
 
-    _this = _super.call(this, props);
+    _this = _super.call(this, props); // debugger
+
     _this.state = {
       tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       // tiles: [0,0],
@@ -178,6 +179,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
   _createClass(Game, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      // debugger
       this.rollDice();
       this.endGame();
       console.log('mount', this.state.tiles);
@@ -185,6 +187,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "restartGame",
     value: function restartGame() {
+      debugger;
       console.log('restart'); // this.setState({tiles:[1,2,3,4,5,6,7,8,9]})
 
       this.setState({
@@ -212,6 +215,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
     key: "chooseTiles",
     value: function chooseTiles(roll_val, num1) {
       var num2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+      // debugger
       num1 = parseInt(num1);
       num2 = parseInt(num2);
       var idx1 = this.state.tiles.indexOf(num1);
@@ -262,13 +266,22 @@ var Game = /*#__PURE__*/function (_React$Component) {
 
       var roll_total = this.state.dice1 + this.state.dice2;
       console.log('state', this.state.tiles);
+      var count = 0;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "master"
       }, this.state.gameOver === false ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tiles-master"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tiles__WEBPACK_IMPORTED_MODULE_1__["Tiles"], {
-        tiles: this.state.tiles
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tiles"
+      }, this.state.tiles.map(function (item) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "indiv-tile",
+          key: count++ // checked={value === item}
+          ,
+          value: item // onChange={this.update()}
+
+        }, item);
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "file-form-master"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "tile-form",
@@ -393,29 +406,6 @@ var Tiles = /*#__PURE__*/function (_React$Component) {
 
   return Tiles;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/***/ }),
-
-/***/ "./main.jsx":
-/*!******************!*\
-  !*** ./main.jsx ***!
-  \******************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_game_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/game.jsx */ "./components/game.jsx");
-
-
-
-var Main = function Main() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_game_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Main);
 
 /***/ }),
 
