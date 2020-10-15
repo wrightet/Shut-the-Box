@@ -100,12 +100,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_game__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/game */ "./components/game.jsx");
+/* harmony import */ var _components_game_hook__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/game_hook */ "./components/game_hook.jsx");
+
 
 
 
 document.addEventListener('DOMContentLoaded', function () {
   var root = document.getElementById('root');
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_game__WEBPACK_IMPORTED_MODULE_2__["default"], null), root);
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_game_hook__WEBPACK_IMPORTED_MODULE_3__["default"], null), root);
 });
 
 /***/ }),
@@ -121,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tiles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tiles */ "./components/tiles.jsx");
+/* harmony import */ var _game_hook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./game_hook */ "./components/game_hook.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -159,11 +161,9 @@ var Game = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, Game);
 
-    _this = _super.call(this, props); // debugger
-
+    _this = _super.call(this, props);
     _this.state = {
       tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-      // tiles: [0,0],
       gameOver: false,
       num1: 0,
       num2: 0,
@@ -171,25 +171,19 @@ var Game = /*#__PURE__*/function (_React$Component) {
       dice2: 0
     };
     _this.restartGame = _this.restartGame.bind(_assertThisInitialized(_this));
-    _this.chooseTiles = _this.chooseTiles.bind(_assertThisInitialized(_this)); // this.update = this.update.bind(this);
-
+    _this.chooseTiles = _this.chooseTiles.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Game, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // debugger
       this.rollDice();
       this.endGame();
-      console.log('mount', this.state.tiles);
     }
   }, {
     key: "restartGame",
     value: function restartGame() {
-      debugger;
-      console.log('restart'); // this.setState({tiles:[1,2,3,4,5,6,7,8,9]})
-
       this.setState({
         gameOver: false
       });
@@ -234,7 +228,6 @@ var Game = /*#__PURE__*/function (_React$Component) {
       if (num1 + num2 === roll_val) {
         new_arr[idx1] = 0;
         if (num2) new_arr[idx2] = 0;
-        console.log('new_arr', new_arr);
         this.setState({
           tiles: new_arr
         });
@@ -265,11 +258,10 @@ var Game = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       var roll_total = this.state.dice1 + this.state.dice2;
-      console.log('state', this.state.tiles);
       var count = 0;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "master"
-      }, this.state.gameOver === false ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_game_hook__WEBPACK_IMPORTED_MODULE_1__["default"], null), this.state.gameOver === false ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tiles-master"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tiles"
@@ -315,97 +307,77 @@ var Game = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./components/tiles.jsx":
-/*!******************************!*\
-  !*** ./components/tiles.jsx ***!
-  \******************************/
-/*! exports provided: Tiles */
+/***/ "./components/game_hook.jsx":
+/*!**********************************!*\
+  !*** ./components/game_hook.jsx ***!
+  \**********************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tiles", function() { return Tiles; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./game */ "./components/game.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
-var Tiles = /*#__PURE__*/function (_React$Component) {
-  _inherits(Tiles, _React$Component);
-
-  var _super = _createSuper(Tiles);
-
-  function Tiles(props) {
-    var _this;
-
-    _classCallCheck(this, Tiles);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      tiles: _this.props.tiles
-    };
-    return _this;
-  } // componentDidUpdate(){
-  //     debugger
-  //     console.log('update')
-  //     console.log(this.props.tiles)
-  //     console.log(this.state.tiles)
-  // }
 
 
-  _createClass(Tiles, [{
-    key: "update",
-    value: function update(field) {
-      var _this2 = this;
+function GameToo() {
+  var tiles = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  var gameOver = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
 
-      return function (e) {
-        return _this2.setState(_defineProperty({}, field, e.target.value));
-      };
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      console.log(this.props); // debugger
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState2 = _slicedToArray(_useState, 1),
+      num1 = _useState2[0];
 
-      var count = 0;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tiles"
-      }, this.props.tiles.map(function (item) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "indiv-tile",
-          key: count++ // checked={value === item}
-          ,
-          value: item // onChange={this.update()}
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState4 = _slicedToArray(_useState3, 1),
+      num2 = _useState4[0];
 
-        }, item);
-      }));
-    }
-  }]);
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState6 = _slicedToArray(_useState5, 1),
+      dice1 = _useState6[0];
 
-  return Tiles;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState8 = _slicedToArray(_useState7, 1),
+      dice2 = _useState8[0];
+
+  var count = 0;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    document.title = "Dice Roll: {dice1}, {dice2}";
+  });
+
+  function diceRoll() {
+    var one = Math.floor(Math.random() * (7 - 1) + 1);
+    var two = Math.floor(Math.random() * (7 - 1) + 1);
+    this.setState({
+      dice1: one,
+      dice2: two
+    });
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, tiles.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "indiv-tile",
+      key: count++,
+      value: item.toString()
+    }, item);
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll: ", dice1, ", ", dice2));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (GameToo);
 
 /***/ }),
 

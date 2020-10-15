@@ -1,13 +1,10 @@
 import React from 'react';
-import {Tiles} from './tiles';
-
+import GameToo from './game_hook'
 class Game extends React.Component{
     constructor(props) {
         super(props);
-        // debugger
         this.state = {
             tiles: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-            // tiles: [0,0],
             gameOver: false,
             num1: 0,
             num2:0,
@@ -16,20 +13,14 @@ class Game extends React.Component{
         }
         this.restartGame = this.restartGame.bind(this);
         this.chooseTiles = this.chooseTiles.bind(this);
-        // this.update = this.update.bind(this);
     }
 
     componentDidMount(){
-        // debugger
        this.rollDice()
        this.endGame()
-       console.log('mount',this.state.tiles)
     }
   
     restartGame(){
-        debugger
-        console.log('restart')
-        // this.setState({tiles:[1,2,3,4,5,6,7,8,9]})
         this.setState({ gameOver: false})
     }
 
@@ -63,7 +54,6 @@ class Game extends React.Component{
        if ((num1 + num2) === roll_val){      
             new_arr[idx1] = 0
             if (num2) new_arr[idx2] = 0
-            console.log('new_arr',new_arr)
             this.setState({tiles: new_arr})
        }
     }
@@ -80,12 +70,11 @@ class Game extends React.Component{
     }
 
     render(){
-      
         let roll_total = this.state.dice1 + this.state.dice2;
-        console.log('state',this.state.tiles)
-       let count = 0
+        let count = 0
         return(
             <div id='master'>
+                <GameToo/>
                 {this.state.gameOver === false ? 
           
                     <div className='tiles-master'>
