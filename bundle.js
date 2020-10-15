@@ -319,6 +319,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./game */ "./components/game.jsx");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -355,26 +357,115 @@ function GameToo() {
       dice2 = _useState8[0];
 
   var count = 0;
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    document.title = "Dice Roll: {dice1}, {dice2}";
-  });
 
   function diceRoll() {
     var one = Math.floor(Math.random() * (7 - 1) + 1);
     var two = Math.floor(Math.random() * (7 - 1) + 1);
-    this.setState({
-      dice1: one,
-      dice2: two
+    dice1 = one;
+    dice2 = two;
+  }
+
+  function update(field) {
+    return function (e) {
+      return Object(react__WEBPACK_IMPORTED_MODULE_0__["setState"])(_defineProperty({}, field, e.target.value));
+    };
+  }
+
+  function restartGame() {
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["setState"])({
+      gameOver: false
     });
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, tiles.map(function (item) {
+  function chooseTiles(roll_val, num1) {
+    var num2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    // debugger
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
+    var idx1 = tiles.indexOf(num1);
+    var idx2 = null;
+    var new_arr = tiles;
+
+    if (num1 !== roll_val) {
+      //    return <div>please choose one or two numbers that add to the combined dice roll</div>
+      console.log('please choose one or two numbers that add to the combined dice roll');
+    }
+
+    if (num2 !== 0) {
+      idx2 = tiles.indexOf(num2);
+    }
+
+    if (num1 + num2 === roll_val) {
+      new_arr[idx1] = 0;
+      if (num2) new_arr[idx2] = 0;
+      Object(react__WEBPACK_IMPORTED_MODULE_0__["setState"])({
+        tiles: new_arr
+      });
+    }
+  }
+
+  function endGame() {
+    var count = 0;
+    var len = tiles.length;
+    tiles.forEach(function (el) {
+      if (el === 0) {
+        count++;
+      }
+    });
+
+    if (count === len) {
+      Object(react__WEBPACK_IMPORTED_MODULE_0__["setState"])({
+        gameOver: true
+      });
+    }
+  }
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    diceRoll();
+    endGame();
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "master"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tiles-master"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tiles"
+  }, tiles.map(function (item) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "indiv-tile",
-      key: count++,
-      value: item.toString()
+      key: count++ // checked={value === item}
+      ,
+      value: item // onChange={this.update()}
+
     }, item);
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Dice Roll: ", dice1, ", ", dice2));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "file-form-master"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "tile-form",
+    onSubmit: function onSubmit() {
+      return chooseTiles(roll_total, num1, num2);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    value: num1,
+    onChange: function onChange() {
+      return update('num1');
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    value: num2,
+    onChange: function onChange() {
+      return update('num2');
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "dice"
+  }, "Dice Roll:", dice1, ", ", dice2)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "GAME OVER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return restartGame();
+    }
+  }, "restart game")));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (GameToo);
